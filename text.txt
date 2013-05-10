@@ -1,0 +1,154 @@
+Die Webanwendung
+
+Zielanwendung: Tagebuch, was soll das können: Anzeigen für alle, vor/zurück, Neu, Bearbeiten, Löschen, Nutzerverwaltung.
+
+Weg dorthin beschreiben.
+
+Was passiert bei Aufruf einer Url?
+
+Öffnen Browser, eintippen einer URL
+
+Browser fragt Betriebssystem nach IP der Url, bekommt diese über DNS.
+
+Dann fragt er an die IP nach entsprechender Seite, das ist HTTP, GET mit Host
+
+Zur Seite noch den Port.
+
+Der Server bekommt die Anfrage, verarbeitet sie und liefert irgendetwas zurück, eine Abfolge von Bytes. Dazu meldet er, um was genau es sich handelt.
+
+In der Regel html-Seite.
+
+html ist eine Seitenbeschreibungssprache, neben Inhalt auch strukturelle Informationen wie Überschrift etc. enthalten.
+
+Wenn das html ist, stellt der Browser die Inhalte dar.
+
+Bildchen dazu
+
+Einschub Anfang......................
+
+Analogie zur besseren Vorstellung
+
+Server entspricht Haus, IP ist die Adresse. 
+
+DNS1: Nummern so schwierig zu merken, dafür gibt es eine große Liste, in der zu einer Adresse ein oder auch mehrere Namen hinterlegt werden können.
+
+Haus hat viele Schalter, die geöffnet oder geschlossen sein können, diese haben Nummern, die Ports genannt werden. Manche sind geöffnet, andere nicht. 
+
+Hinter den Schaltern sitzen dienstbare Geister, entspricht (Server-)Anwendungen, die auf den Ports lauschen. Diese sprechen eine Sprache, hier Protokoll genannt. Diese definiert das mögliche Vokabular und die Grammatik, wer darf wann was sagen, Analogie zur Diplomatie.
+
+Damit Kunden, die zu einem neuen Haus kommen, nicht alle Ports ausprobieren müssen, um jemanden zu finden, der ihrer Sprache mächtig ist, hat man sich auf Standardports für bestimmte Sprachen geeinigt, http auf 80. Das ist aber nur Konvention, niemand verbietet es, dass der Geist an den Schalter nebenan geht und dort seine Dienste erbringt. Als jemand, der den Dienst benutzen möchte, muss man aber dann wissen, zu welchem Schalter man gehen will.
+
+DNS2: Auch DNS ist genau so ein Dienst, der an einem bestimmten Schalter eines bestimmten Hauses erbracht wird. Aber für diese Häuser muss man tatsächlich die Adresse in Form der IP kennen. Diese wird dann fest irgendwo eintragen. Sollte dieser Dienst einmal geschlossen sein, kann man keines der anderen Häuser mehr finden. Deshalb normalerweise mindestens zwei verschiedene DNS-Häuser, falls mal eins zu hat.
+
+Einschub Ende-----------------------
+
+Erstes Beispiel, ganz ohne Server: Datei abc.html, diese mit Firefox aufrufen - es wird etwas angezeigt. Kann halt nur nicht aus dem Internet erfolgen. Analogie Dateiordner als Url + Pfad.
+
+Wenn html geliefert wurde, guckt der Browser nach enthaltenen Bildern, CSS und javascript und lädt diese ggf. ebenfalls nach.
+
+Es ist möglich, dass im ausgelieferten html auch Referenzen auf weitere Dateien wie Bilder, CSS und javascript enthalten sind. Diese lädt der Browser nach, indem er für jede Referenz die eben beschriebenen Schritte durchführt. Die referenzierten Inhalte können dabei auch von anderen Servern stammen als von dem, der die ursprüngliche html-Seite
+liefert.
+
+Bildchen dazu
+
+Beispiel erweitern: Bildchen und so als Dateien mit ablegen, die werden dann mit angezeigt.
+
+Bilder werden an der entsprechenden Stelle angezeigt.
+
+CSS für die Gestaltung der Inhalte. Regeln, die z.B. für Überschriften die Schriftgrößen und für Bilder den Abstand zum Text festlegen.
+
+Einfaches Beispiel: .h1 { background: red }
+
+Ohne Css-Deklarationen verwenden Browser Voreinstellungen für die unterschiedlichen Elemente.
+
+javascript als Programmiersprache, um einer Webseite dynamisches Verhalten hinzuzufügen.
+
+Die javascript-Befehle werden ausgeführt und Events registriert, auf die der Browser dann bei entsprechenden Aktionen reagiert und den Code ausführt.
+
+Einfaches Beispiel: Hinweis, wenn auf irgendetwas geklickt wird, oder sowas.
+
+So, das war die Beschreibung, was da so alles passiert. Nun wollen wir selbst in einem Haus einen Schalter besetzen und der Welt unseren dienstbaren Geist etwas Gutes tun lassen.
+
+Was brauchen wir, um das so hinzubekommen?
+
+physikalischen Server und IP dazu
+DNS-Eintrag für die IP (für das lokale Testen reicht ja etc/hosts)
+URL gemäß DNS-Eintrag
+Html-, Css-, JavaScript-Dateien
+Serveranwendung, die einen Port öffnen kann und die nachgefragten Dateien ausliefert (der Geist)
+
+Konkretes Beispiel: lighttpd, files only, config, html
+
+dann css dazu
+
+dann javascript, ajax
+
+Es besteht auch die Möglichkeit, css und javascript direkt in die html-Datei zu integrieren.
+
+Bisheriges Beispiel umschreiben.
+
+Vorteil: Nur ein Abruf.
+
+Nachteil: Wird jedesmal mit ausgeliefert. Andernfalls kann der Browser oder ein Proxy cachen. Bei Einsatz von VCS jedesmal neue Version von allem, statt nur von Script, Html oder Css.
+
+Unsere Zielanwendung: Tagebuch
+
+Was macht das: Für alle anzeigen was ist, was war und was sein wird, max 10 Einträge ab jetzt
+
+Neue Einträge erzeugen
+
+Erfordert persistente Speicherung: Datenbank nötig, die läuft irgendwo zentral
+
+Zunächst Annahme: Ein Tagebuch für alle, ohne login
+
+Bildchen
+
+Wie das dann machen, welcher Server, Sprachen, DBs, ...
+
+Jetzt mit vor/zurück
+
+Ajax
+
+Dom
+
+Nun: Einträge löschen
+
+Einträge ändern
+
+
+Später: Pro Nutzer, wie Userverwaltung, Login, Sessions
+
+Am Ende: JavaScript-Frameworks - jQuery
+
+Danach: css-Frameworks - foundation, enthält jQuery
+
+Weitere Hinweise
+
+Browsersupport:
+
+html: Unterschiedliche Versionen,
+xhtml
+html5
+
+css: Unterschiedliche Versionen,
+css2.1
+css3
+
+Manche Specs unklar, z.T. Implementierungen fehlerhaft,; Browserweichen
+
+Responsive Web Design, Media Queries
+
+Canvas
+
+Multimedia
+
+WOFF
+
+Weiterführende Links:
+- html
+- css
+- javascript
+- lighttpd
+- apache
+- jQuery
+- foundation
