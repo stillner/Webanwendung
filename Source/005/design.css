@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+/* Überschrift der obersten Ebene - dank der vorhergehenden 
+   Charset-Definition dürfen wir auch Umlaute nutzen */
+h1 {
+	color:red;
+	}
+
+/* Überschrift der zweithöchsten Ebene */
+h2 {
+	color:lightblue;
+	}
+	

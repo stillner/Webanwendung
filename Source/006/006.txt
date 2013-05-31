@@ -1,0 +1,9 @@
+Da wir es brauchen werden, kommt jetzt schon mal JavaScript hinzu.
+
+Sprache, die im Browser ausgeführt wird. 
+
+JavaScript, EcmaScript, Versionen, welcher Browser unterstützt welche Version, IE8 kein indexOf. Einsatz von js-Frameworks überlegen...
+
+Einbinden direkt in html oder Verweis auf Datei, was wir hier bevorzugen.
+
+<script ...></script> verwenden, nicht die Kurzform <script... />!
